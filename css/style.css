@@ -65,7 +65,7 @@ header a:hover{
 /* Showcase */
 #showcase{
     min-height:400px;
-    background:url('../img/showcase.jpg') no-repeat 0 -400px;
+    background-image:url("showcase.jpg");
     text-align:center;
     color:#ffffff;
 }
@@ -80,4 +80,7 @@ header a:hover{
     font-size:20px;
 }
 
-#giveaway
+#giveaway{
+    padding:15px;
+    color:#ffffff;
+}
