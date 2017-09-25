@@ -23,7 +23,15 @@ ul{
     border:0;
     padding-left:20px;
     padding-right:20px;
-    color:#ffffff;20
+    color:#ffffff;
+}
+
+.dark{
+    padding:15px;
+    background:#e8491d;
+    color:#ffffff;
+    margin-top:10px;
+    
 }
 /* Header **/
 header{
@@ -124,10 +132,58 @@ header a:hover{
     width:90px;
 }
 
+/* Sidebar */
+aside#sidebar{
+    float:right;
+    width:30%;
+    margin-top:10px;
+}
+
+/* Main-coL */
+article#main-col{
+    float:left;
+    width:65%;
+}
+
 footer{
     padding:20px;
     margin-top:20px;
     color:#ffffff;
     background-color:#e8491d;
     text-align:center;
+}
+
+/* Media Quaries */
+@media(max-width:768px){
+    header #branding,
+    header nav,
+    header nav li,
+    #giveaway h1,
+    #giveaway form,
+    #boxes .box,
+    article#main-col,
+    aside#sidebar{
+      float:none;
+      text-align:center;
+      width:100%;
+    }
+
+    header{
+    padding-bottom:20px;
+    }
+
+    #showcase h1{
+    margin-top:40px;
+    }
+    
+    #giveaway button{
+        display:block;
+        width:100%;
+    }
+    
+    #giveaway form input[type="email"]{
+        width:100%;
+        margin-bottom:5px;
+    }
+    
 }
