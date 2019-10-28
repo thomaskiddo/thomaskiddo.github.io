@@ -2,7 +2,7 @@ body{
 font: 15px/1.5 Arial, Helvetica, sans-serif;
 padding:0;
 margin:0;
-background-color:#19178c;
+background-color:#3192fd;
 color:#ffffff;
 }
 
@@ -28,18 +28,18 @@ ul{
 
 .dark{
     padding:15px;
-    background:#e8491d;
+    background:#9100c9;
     color:#ffffff;
     margin-top:10px;
     
 }
 /* Header **/
 header{
-    background:#e31616;
+    background:#9100c9;
     color:#ffffff;
     padding-top:30px;
     min-height:70px;
-    border-bottom:#e8491d 3px solid;
+    border-bottom:#ffffff 3px solid;
 }
 
 header a{
@@ -81,7 +81,7 @@ header a:hover{
 /* Showcase */
 #showcase{
     min-height:400px;
-    background:url('../img/showcase.png');
+    background:url('');
     text-align:center;
     color:#ffffff;
 }
@@ -149,7 +149,7 @@ footer{
     padding:20px;
     margin-top:20px;
     color:#ffffff;
-    background-color:#e8491d;
+    background-color:#9100c9;
     text-align:center;
 }
 
