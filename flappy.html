@@ -14,8 +14,8 @@
     
     <script type="text/processing">
     
-      PImage bg, danny, topPipe, botPipe;
-      int bgx, bgy, dx, dy, g, Vdy;
+      PImage bg, chicken, topPipe, botPipe;
+      int bgx, bgy, cx, cy, g, Vcy;
       int[] pipeX, pipeY;
       int gameState, score;
 
@@ -23,29 +23,34 @@
       {
         size(800,600);
         bg = loadImage("./img/bg.png");
-        danny = loadImage("./img/danny.png");
-        botPipe = loadImage("./img/pipe.png");
+        chicken = loadImage("./img/chicken.png");
+        botPipe= loadImage("./img/botPipe.png");
         topPipe = loadImage("./img/topPipe.png");
-        dx = 100;
-        dy = 50;
-        g = 1;//Gravity variable, which is the speed of downward acceleration
-        pipeX = new int[5];//[0,0,0,0,0]
+        cx = 100;
+        cy = 50;
+        g = 1; //Gravity variable, which is the speed of downward acceleration
+        pipeX = new int[5]; //[0,0,0,0]
         pipeY = new int[pipeX.length];
-         //POPULATE THE ARRAY
+        //POPULATE THE ARRAY
         for(int i = 0; i < pipeX.length; i++)
         {
           pipeX[i] = width + 200*i;
-          pipeY[i] = (int)random(-370,0);
+          pipeY[i] = (int)random(-350, 0);
         }
+        gameState = -1;
       }
       //MAIN GAME LOOP
       void draw()
       {
-        if(gameState==0)
+        if(gameState == -1)
+        {
+          startScreen();
+        }
+        else if(gameState==0)
         {
         setBg();
         setPipes();
-        danny();
+        chicken();
         score();
         }
         else
@@ -53,8 +58,8 @@
           fill(255);
           text("YOU LOSE", 20,100);
         }
-
       }
+
 
       void score()
       {
@@ -63,10 +68,22 @@
         text("Score: " + score, width -170, 40);
       }
 
-
+      void startScreen()
+      {
+        image(bg, 0, 0);
+        textSize(40);
+        text("Welcome to Flappy Chick!", 40 ,100);
+        text("CLICK TO START", 40, 200);
+        if (mousePressed)
+        {
+          cy = height/2;
+          gameState = 0;
+        }
+      }
+ 
       void setPipes()
       {
-        for(int i = 0; i < pipeX.length; i++)
+          for(int i = 0; i < pipeX.length; i++)
         {
         image(topPipe, pipeX[i], pipeY[i]);
         image(botPipe, pipeX[i], pipeY[i] + 680);
@@ -75,47 +92,50 @@
         {
           pipeX[i] = width;
         }
-        if(dx > (pipeX[i]-49) && dx < pipeX[i] + 100)
+        if(cx > (pipeX[i]-41) && cx < pipeX[i] + 94)
         {
-          if(!(dy > pipeY[i] + 430 && dy < pipeY[i] + (430 + 250-45)))
+          if(!(cy > pipeY[i] + 449 && cy < pipeY[i] + (449 + 231-50)))
           {
           gameState = 1;
           }
-          else if (dx==pipeX[i])
+          else if (cx==pipeX[i])
           {
             score ++;
           }
         }
         }
       }
-
-      void danny()
+ 
+      void chicken()
       {
-        image(danny, dx, dy);
-        dy = dy + Vdy;
-        Vdy = Vdy + g;
-        if(dy > height || dy < 0)
+        image(chicken, cx, cy);
+        cy = cy + Vcy;
+        Vcy = Vcy + g;
+        if(cy > height || cy < 0)
           {
             text("YOU LOSE!", 40 , 34);
             gameState=1;
           }
       }
 
-      void setBg()
-      {
-         image(bg,bgx,bgy);
-         image(bg, bgx + bg.width, bgy);
-         bgx = bgx - 1;
-         if(bgx < -bg.width)
-         {
-           bgx = 0;
-         }
-      }
-
       void mousePressed()
       {
-        Vdy = -15;
+        Vcy = -15;
       }
+
+      void setBg()
+      {
+        image(bg, bgx, bgy);
+        image(bg, bgx + bg.width, bgy);
+        bgx = bgx - 1;
+        if(bgx < -bg.width)
+        {
+          bgx = 0; //Resets once first image is done
+        }
+      }
+
+
+      //top&bot pipe == h=449px w=94px || chicken == h=50px w=41px
     </script>
     <canvas id="sketch" style="border: 1px solid black;"></canvas>
     
