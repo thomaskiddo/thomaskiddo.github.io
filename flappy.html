@@ -66,7 +66,7 @@
         fill(0);
         textSize(32);
         text("Score: " + score, width -170, 40);
-        text("Highscore: " + highScore, width -170, 60);
+        text("Highscore: " + highScore, width -242, 80);
       }
 
       void startScreen()
@@ -102,7 +102,7 @@
           else if (cx==pipeX[i])
           {
             score ++;
-            highscore = score;
+            highScore = score;
           }
         }
         }
@@ -135,9 +135,6 @@
           bgx = 0; //Resets once first image is done
         }
       }
-
-
-      //top&bot pipe == h=449px w=94px || chicken == h=50px w=41px
     </script>
     <canvas id="sketch" style="border: 1px solid black;"></canvas>
     
