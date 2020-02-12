@@ -17,7 +17,7 @@
       PImage bg, chicken, topPipe, botPipe;
       int bgx, bgy, cx, cy, g, Vcy;
       int[] pipeX, pipeY;
-      int gameState, score;
+      int gameState, score, highScore;
 
       void setup()
       {
@@ -51,7 +51,7 @@
         setBg();
         setPipes();
         chicken();
-        Score();
+        theScore();
         }
         else
         {
@@ -61,11 +61,12 @@
       }
 
 
-      void Score()
+      void theScore()
       {
         fill(0);
         textSize(32);
         text("Score: " + score, width -170, 40);
+        text("Highscore: " + highScore, width -170, 60);
       }
 
       void startScreen()
@@ -101,6 +102,7 @@
           else if (cx==pipeX[i])
           {
             score ++;
+            highscore = score;
           }
         }
         }
